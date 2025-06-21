@@ -12,3 +12,18 @@ class Empresa(models.Model):
 
     def __str__(self):
         return self.razao_social
+
+    def adc_filial(self, filial):
+        if self.filiais.count() < self.num_max_filiais:
+            filial.empresa = self
+            filial.save()
+            self.qtd_filiais = self.filiais.count()
+            self.save()
+
+    def excluir_filial(self, filial):
+        filial.delete()
+        self.qtd_filiais = self.filiais.count()
+        self.save()
+
+    def buscar_filial(self, nome):
+        return self.filiais.filter(nome_cidade__iexact=nome).first()
