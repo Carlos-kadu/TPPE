@@ -1,10 +1,10 @@
 services:
-  web:
+  back:
     build: .
-    container_name: WEB
+    container_name: BACKEND
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./app
+      - .:/app
     ports:
       - "8000:8000"
     depends_on:
@@ -31,6 +31,11 @@ services:
              pytest"
     depends_on:
       - db
+  
+  flake8:
+    container_name: LINTER
+    build: .
+    command: flake8
     
 volumes:
   pgdata:
