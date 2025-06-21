@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'empresa',
     'filial',
     'produtos',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
