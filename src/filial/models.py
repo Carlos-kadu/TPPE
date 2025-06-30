@@ -1,17 +1,24 @@
 from django.db import models
 from empresa.models import Empresa
 
+
 class Filial(models.Model):
     id_filial = models.AutoField(primary_key=True)
 
     nome_cidade = models.CharField(max_length=100)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name='filiais', db_column='id_empresa')
+    empresa = models.ForeignKey(
+        Empresa, on_delete=models.CASCADE,
+        related_name='filiais',
+        db_column='id_empresa'
+        )
 
     class Meta:
         db_table = 'filial'
 
     def __str__(self):
-        return self.nome_cidade
+        return (
+            f"{self.nome_cidade} ({self.empresa.razao_social})"
+        )
 
     @property
     def qtd_produtos(self):
@@ -35,7 +42,13 @@ class Filial(models.Model):
 
     def obter_caracteristicas_principais(self):
         return [
-            [p.nome, str(p.preco), str(p.quant), self.nome_cidade, p.__class__.__name__]
+            [
+                p.nome,
+                str(p.preco),
+                str(p.quant),
+                self.nome_cidade,
+                p.__class__.__name__
+            ]
             for p in self.produtos.all()
         ]
 
