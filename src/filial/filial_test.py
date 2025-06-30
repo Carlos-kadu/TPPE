@@ -10,7 +10,6 @@ def test_create_filial():
     empresa = Empresa.objects.create(
         razao_social="Empresa F",
         cnpj="55.555.555/0001-55",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     client = APIClient()
@@ -28,7 +27,6 @@ def test_get_filiais():
     empresa = Empresa.objects.create(
         razao_social="Empresa F2",
         cnpj="66.666.666/0001-66",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     Filial.objects.create(nome_cidade="Cidade 1", empresa=empresa)
@@ -43,7 +41,6 @@ def test_update_filial():
     empresa = Empresa.objects.create(
         razao_social="Empresa F3",
         cnpj="77.777.777/0001-77",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     filial = Filial.objects.create(nome_cidade="Cidade X", empresa=empresa)
@@ -64,7 +61,6 @@ def test_delete_filial():
     empresa = Empresa.objects.create(
         razao_social="Empresa F4",
         cnpj="88.888.888/0001-88",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     filial = Filial.objects.create(nome_cidade="Cidade Del", empresa=empresa)
