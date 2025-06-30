@@ -38,3 +38,20 @@ class Filial(models.Model):
             [p.nome, str(p.preco), str(p.quant), self.nome_cidade, p.__class__.__name__]
             for p in self.produtos.all()
         ]
+
+    def editar_filial(self, **kwargs):
+        for attr, value in kwargs.items():
+            if hasattr(self, attr):
+                setattr(self, attr, value)
+        self.save()
+
+    def visualizar_filial(self):
+        return {
+            'id_filial': self.id_filial,
+            'nome_cidade': self.nome_cidade,
+            'empresa': self.empresa_id,
+            'qtd_produtos': self.qtd_produtos
+        }
+
+    def deletar_filial(self):
+        self.delete()
