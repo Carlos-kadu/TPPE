@@ -1,5 +1,9 @@
 from rest_framework.routers import DefaultRouter
-from .views import AlimentacaoViewSet, VestuarioViewSet, UtilidadesDomesticasViewSet
+from .views import (
+    AlimentacaoViewSet,
+    VestuarioViewSet,
+    UtilidadesDomesticasViewSet,
+)
 
 router = DefaultRouter()
 router.register(r'alimentacao', AlimentacaoViewSet)
