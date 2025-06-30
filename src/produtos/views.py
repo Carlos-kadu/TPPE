@@ -1,9 +1,11 @@
-from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework import filters
 from .models import Alimentacao, Vestuario, UtilidadesDomesticas
-from .serializers import AlimentacaoSerializer, VestuarioSerializer, UtilidadesDomesticasSerializer
-from django.db.models import Q
+from .serializers import (
+    AlimentacaoSerializer,
+    VestuarioSerializer,
+    UtilidadesDomesticasSerializer,
+)
+
 
 class AlimentacaoViewSet(viewsets.ModelViewSet):
     queryset = Alimentacao.objects.all()
@@ -23,6 +25,7 @@ class AlimentacaoViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(quant__lte=threshold)
         return queryset
 
+
 class VestuarioViewSet(viewsets.ModelViewSet):
     queryset = Vestuario.objects.all()
     serializer_class = VestuarioSerializer
@@ -40,6 +43,7 @@ class VestuarioViewSet(viewsets.ModelViewSet):
                 threshold = 20
             queryset = queryset.filter(quant__lte=threshold)
         return queryset
+
 
 class UtilidadesDomesticasViewSet(viewsets.ModelViewSet):
     queryset = UtilidadesDomesticas.objects.all()
