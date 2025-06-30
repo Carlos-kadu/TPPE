@@ -10,7 +10,6 @@ def test_create_empresa():
     data = {
         "razao_social": "Empresa Teste",
         "cnpj": "00.000.000/0001-00",
-        "qtd_filiais": 0,
         "num_max_filiais": 5
     }
     response = client.post(reverse("empresa-list"), data)
@@ -23,7 +22,6 @@ def test_get_empresas():
     Empresa.objects.create(
         razao_social="Empresa 1",
         cnpj="11.111.111/0001-11",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     client = APIClient()
@@ -37,7 +35,6 @@ def test_update_empresa():
     empresa = Empresa.objects.create(
         razao_social="Empresa 2",
         cnpj="22.222.222/0001-22",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     client = APIClient()
@@ -45,7 +42,6 @@ def test_update_empresa():
     data = {
         "razao_social": "Empresa Atualizada",
         "cnpj": empresa.cnpj,
-        "qtd_filiais": empresa.qtd_filiais,
         "num_max_filiais": empresa.num_max_filiais
     }
     response = client.put(url, data)
@@ -59,7 +55,6 @@ def test_delete_empresa():
     empresa = Empresa.objects.create(
         razao_social="Empresa 3",
         cnpj="33.333.333/0001-33",
-        qtd_filiais=0,
         num_max_filiais=5
     )
     client = APIClient()
