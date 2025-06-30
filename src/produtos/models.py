@@ -23,6 +23,24 @@ class Produto(models.Model):
         self.descricao = descricao
         self.save()
 
+    def editar_produto(self, **kwargs):
+        for attr, value in kwargs.items():
+            if hasattr(self, attr):
+                setattr(self, attr, value)
+        self.save()
+
+    def visualizar_produto(self):
+        return {
+            'indice': self.indice,
+            'nome': self.nome,
+            'preco': float(self.preco),
+            'quant': self.quant,
+            'descricao': self.descricao
+        }
+
+    def deletar_produto(self):
+        self.delete()
+
 class Alimentacao(Produto):
     filial = models.ForeignKey(
         Filial,
