@@ -1,6 +1,7 @@
 from django.db import models
 from filial.models import Filial
 
+
 class Produto(models.Model):
     indice = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=100)
@@ -41,6 +42,7 @@ class Produto(models.Model):
     def deletar_produto(self):
         self.delete()
 
+
 class Alimentacao(Produto):
     filial = models.ForeignKey(
         Filial,
@@ -54,6 +56,7 @@ class Alimentacao(Produto):
     class Meta:
         db_table = 'alimentacao'
 
+
 class Vestuario(Produto):
     filial = models.ForeignKey(
         Filial,
@@ -66,6 +69,7 @@ class Vestuario(Produto):
 
     class Meta:
         db_table = 'vestuario'
+
 
 class UtilidadesDomesticas(Produto):
     filial = models.ForeignKey(
