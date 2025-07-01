@@ -78,13 +78,13 @@ WSGI_APPLICATION = 'gestor_estoque.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gestor_estoque_db',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': 'db',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": os.getenv("DATABASE_HOST", "banco"),
+        "PORT": os.getenv("DATABASE_PORT", "5432"),
+        "NAME": os.getenv("POSTGRES_DB", "gestor_estoque_db"),
+        "USER": os.getenv("POSTGRES_USER", "user"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "password"),
     }
 }
 
