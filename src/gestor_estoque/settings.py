@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'filial',
     'produtos',
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://p01--backend--4wy7h7wyjvd7.code.run",
 ]
 
 ROOT_URLCONF = 'gestor_estoque.urls'
