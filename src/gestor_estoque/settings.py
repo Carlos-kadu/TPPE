@@ -66,6 +66,7 @@ SWAGGER_SETTINGS = {
     "DEFAULT_API_URL": "https://p01--backend--4wy7h7wyjvd7.code.run/api/",
 }
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ROOT_URLCONF = 'gestor_estoque.urls'
 
